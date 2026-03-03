@@ -1,0 +1,13 @@
+/* Situação: Transformação visual via estilo */
+
+/* Transforma todos os itens da lista em MAIÚSCULO automaticamente */
+li {
+    text-transform: uppercase;
+    list-style-type: square;
+}
+
+/* Um truque visual: destaca nomes que começam com A (se você souber a ordem) */
+li:nth-child(1), li:nth-child(3), li:nth-child(5) {
+    color: blue;
+    font-weight: bold;
+}
