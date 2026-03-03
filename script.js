@@ -1,44 +1,29 @@
-const guests = [];
-const btn = document.getElementById('addBtn');
-const input = document.getElementById('guestName');
-const listUl = document.getElementById('displayList');
-const counterSpan = document.getElementById('aCounter');
+<script>
+    function filtrarNomes() {
+        // 1. Pega o valor do input e o elemento da lista
+        const input = document.getElementById('inputNomes').value;
+        const listaUI = document.getElementById('listaResultado');
+        
+        // Limpa a lista antes de começar
+        listaUI.innerHTML = "";
 
-btn.addEventListener('click', () => {
-    const name = input.value.trim();
-    
-    if (name !== "") {
-        guests.push(name);
-        input.value = "";
-        updateApp();
-    }
-});
+        // 2. Transforma a string em um Array e remove espaços extras
+        const nomesArray = input.split(',').map(nome => nome.trim());
 
-function updateApp() {
-    listUl.innerHTML = ""; // Limpa a lista visual
-    let countA = 0;
+        // 3. Filtra nomes que começam com "A" ou "a"
+        const nomesComA = nomesArray.filter(nome => 
+            nome.toLowerCase().startsWith('a')
+        );
 
-    // LOOP PRINCIPAL
-    for (let i = 0; i < guests.length; i++) {
-        // 1. Transformar em maiúsculo
-        let upperName = guests[i].toUpperCase();
+        // 4. Exibe os nomes na tela
+        nomesComA.forEach(nome => {
+            const li = document.createElement('li');
+            li.textContent = nome;
+            listaUI.appendChild(li);
+        });
 
-        // 2. Criar elemento na tela
-        let li = document.createElement('li');
-        li.textContent = upperName;
-        listUl.appendChild(li);
-
-        // 3. Contar nomes que começam com 'A'
-        if (upperName.startsWith('A')) {
-            countA++;
+        if (nomesComA.length === 0 && input !== "") {
+            listaUI.innerHTML = "<li>Nenhum nome encontrado.</li>";
         }
     }
-
-    // Atualiza o contador no HTML
-    counterSpan.textContent = countA;
-}
-
-// Permitir adicionar ao apertar Enter
-input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') btn.click();
-});
+</script>
