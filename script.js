@@ -1,18 +1,44 @@
-// Situação: Processamento dinâmico de dados
-const convidados = ["Alice", "Bruno", "Amanda", "Carlos", "Arthur"];
-let contadorA = 0;
+const guests = [];
+const btn = document.getElementById('addBtn');
+const input = document.getElementById('guestName');
+const listUl = document.getElementById('displayList');
+const counterSpan = document.getElementById('aCounter');
 
-console.log("--- LISTA JAVASCRIPT ---");
-
-convidados.forEach(nome => {
-    // 1. Transformar em maiúsculo
-    let nomeMaiusculo = nome.toUpperCase();
-    console.log(nomeMaiusculo);
-
-    // 2. Contar nomes que começam com A
-    if (nomeMaiusculo.startsWith("A")) {
-        contadorA++;
+btn.addEventListener('click', () => {
+    const name = input.value.trim();
+    
+    if (name !== "") {
+        guests.push(name);
+        input.value = "";
+        updateApp();
     }
 });
 
-console.log("Total de nomes com A:", contadorA);
+function updateApp() {
+    listUl.innerHTML = ""; // Limpa a lista visual
+    let countA = 0;
+
+    // LOOP PRINCIPAL
+    for (let i = 0; i < guests.length; i++) {
+        // 1. Transformar em maiúsculo
+        let upperName = guests[i].toUpperCase();
+
+        // 2. Criar elemento na tela
+        let li = document.createElement('li');
+        li.textContent = upperName;
+        listUl.appendChild(li);
+
+        // 3. Contar nomes que começam com 'A'
+        if (upperName.startsWith('A')) {
+            countA++;
+        }
+    }
+
+    // Atualiza o contador no HTML
+    counterSpan.textContent = countA;
+}
+
+// Permitir adicionar ao apertar Enter
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') btn.click();
+});
