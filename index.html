@@ -3,35 +3,17 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Guest List VIP</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Filtro de Nomes</title>
 </head>
 <body>
 
-    <div class="app-container">
-        <header>
-            <h1>Convidados VIP</h1>
-            <p>Gerencie sua lista com elegância</p>
-        </header>
+    <div class="container">
+        <h2>Filtrar Nomes com "A"</h2>
+        <input type="text" id="inputNomes" placeholder="Ex: Ana, Bruno, Alberto, Carla...">
+        <button onclick="filtrarNomes()">Filtrar</button>
 
-        <section class="input-section">
-            <input type="text" id="guestName" placeholder="Nome do convidado...">
-            <button id="addBtn">ADICIONAR</button>
-        </section>
-
-        <section class="list-section">
-            <ul id="displayList">
-                </ul>
-        </section>
-
-        <footer>
-            <div class="counter-box">
-                <span class="label">Iniciam com a letra 'A'</span>
-                <span id="aCounter" class="number">0</span>
-            </div>
-        </footer>
+        <ul id="listaResultado"></ul>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
