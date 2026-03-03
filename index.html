@@ -1,8 +1,37 @@
-<h3>Lista de Convidados (HTML)</h3>
-<ul>
-  <li>ALICE</li> <li>BRUNO</li>
-  <li>AMANDA</li>
-  <li>CARLOS</li>
-  <li>ARTHUR</li>
-</ul>
-<p>Nomes que começam com A: 3 (Contado manualmente)</p>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest List VIP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Convidados VIP</h1>
+            <p>Gerencie sua lista com elegância</p>
+        </header>
+
+        <section class="input-section">
+            <input type="text" id="guestName" placeholder="Nome do convidado...">
+            <button id="addBtn">ADICIONAR</button>
+        </section>
+
+        <section class="list-section">
+            <ul id="displayList">
+                </ul>
+        </section>
+
+        <footer>
+            <div class="counter-box">
+                <span class="label">Iniciam com a letra 'A'</span>
+                <span id="aCounter" class="number">0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
